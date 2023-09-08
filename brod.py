@@ -4,19 +4,37 @@ bot     = telebot.TeleBot("TOKEN")
 ids     = open("ids.txt","r").readlines()
 message = open("msg.txt","r").read()
 i       = 0
-f       = 0
-t       = 0
+F       = 0
+T       = 0
 os.system('clear')
 start   = timer()
-for id in ids:
+for Id in ids:
     i = i+1
     try:
-        bot.send_message(id,message)
-        print(f"==================DONE==================\nID: {id}\nNUMBER: {i}/{len(ids)}\nSTATUS: Success\n\n")
-        t = t+1
+        bot.send_message(Id,message)
+        print(f"""
+==================DONE==================
+ID: {Id}
+NUMBER: {i}/{len(ids)}
+STATUS: Success
+
+""")
+        T = T+1
     except Exception as e:
-        print(f"==================FAIL==================\nID {id}\nNUMBER: {i}/{len(ids)}\nSTATUS: Fail\n{e}\n\n")
-        f = f+1
+        print(f"""
+==================FAIL==================
+ID {Id}
+NUMBER: {i}/{len(ids)}
+STATUS: Fail
+{e}
+
+""")
+        F = F+1
 end = timer()
 ttt = end-start
-print(f"==================BROD==================\nBROD TO {len(ids)}\nSUCCESS: {t}/{len(ids)}\nFAIL: {f}/{len(ids)}\nTIME: {ttt}\n")
+print(f"""
+==================BROD==================
+BROD TO {len(ids)}
+SUCCESS: {T}/{len(ids)}
+FAIL: {F}/{len(ids)}
+TIME: {ttt}""")
