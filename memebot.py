@@ -2,7 +2,7 @@
 import telebot, requests
 from telebot import types
 
-bot    = telebot.TeleBot("6110163742:AAEOL9RWspDFdZZkat1TbcMyz_uXAmrzsPY")
+bot    = telebot.TeleBot("TOKEN")
 devurl = types.InlineKeyboardButton(text="Mr. X      -      المطور", url="https://t.me/linux_nerd")
 key = types.InlineKeyboardMarkup(row_width=3)
 button_Meme = types.InlineKeyboardButton(text="Gimme meme", callback_data="gimme")
