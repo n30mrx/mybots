@@ -3490,3 +3490,4 @@ env/lib/python3.11/site-packages/yarl-1.9.2.dist-info/WHEEL
 env/share/man/man1/qr.1
 env/
 data_lili.py
+__pycache__/brod.cpython-311.pyc
