@@ -3491,3 +3491,4 @@ env/share/man/man1/qr.1
 env/
 data_lili.py
 __pycache__/brod.cpython-311.pyc
+.gitignore
