@@ -4,7 +4,7 @@ from  telebot.async_telebot import AsyncTeleBot
 from telebot.formatting import escape_markdown
 import brod
 bot = AsyncTeleBot(
-    token="TOKE",
+    token="TOKEN",
     colorful_logs=True,
 )
 devurl = tps.InlineKeyboardButton(text="Mr. X   -   المطور",url="https://t.me/linux_nerd")
@@ -37,6 +37,18 @@ async def start(msg):
             reply_markup=kbd
         )
 
+def score(scr):
+    match scr:
+        case 1:
+            return "poor"
+        case 2:
+            return "weak"
+        case 3:
+            return "good"
+        case 4:
+            return "excelent"
+
+
 
 @bot.message_handler()
 async def testPass(msg):
@@ -50,7 +62,7 @@ async def testPass(msg):
     crackTimes = pas["crack_times_display"]
     await bot.send_message(
         chat_id=cid,
-        text=f'''Results for ||{escape_markdown(pas["password"])}||\nScore💯: {pas["score"]}\nCan be cracked with💥:{cracker}\n\nCrack times⏳:\nOnline throttling 100 per hour: {crackTimes["online_throttling_100_per_hour"]}\nOnline no throttling 10 per second: {crackTimes["online_no_throttling_10_per_second"]}\nOffline slow hashing 10,000 per second: {crackTimes["offline_slow_hashing_1e4_per_second"]}\nOffline fast hashing 10,000,000,000 per second: {crackTimes["offline_fast_hashing_1e10_per_second"]}\n\nWarnings⚠️: {warnings.strip()}\n\nSuggestions: {suggestions_len}\n{escape_markdown(sgs)}''',
+        text=f'''Results for ||{escape_markdown(pas["password"])}||\nScore💯: {score(int(pas["score"]))}\nCan be cracked with💥:{cracker}\n\nCrack times⏳:\nOnline throttling 100 per hour: {crackTimes["online_throttling_100_per_hour"]}\nOnline no throttling 10 per second: {crackTimes["online_no_throttling_10_per_second"]}\nOffline slow hashing 10,000 per second: {crackTimes["offline_slow_hashing_1e4_per_second"]}\nOffline fast hashing 10,000,000,000 per second: {crackTimes["offline_fast_hashing_1e10_per_second"]}\n\nWarnings⚠️: {warnings.strip()}\n\nSuggestions: {suggestions_len}\n{escape_markdown(sgs)}''',
         parse_mode="MarkdownV2"
     )
 
