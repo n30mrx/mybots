@@ -3494,3 +3494,5 @@ __pycache__/brod.cpython-311.pyc
 .gitignore
 ids.txt
 ipInfo.py
+neovide_backtraces.log
+idsp.txt
