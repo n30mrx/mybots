@@ -8,6 +8,7 @@ bot = AsyncTeleBot(
     colorful_logs=True,
 )
 devurl = tps.InlineKeyboardButton(text="Mr. X   -   المطور",url="https://t.me/linux_nerd")
+giturl = tps.InlineKeyboardButton(text="Source code   -   كود البوت",url="https://github.com/n30mrx/mybots/tree/main/password.py")
 @bot.message_handler(commands=["start"])
 async def start(msg):
     with open("idsp.txt","r") as ff:
@@ -18,6 +19,7 @@ async def start(msg):
     cid = msg.chat.id
     kbd = tps.InlineKeyboardMarkup(row_width=1)
     kbd.add(devurl)
+    kbd.add(giturl)
     print(msg.from_user.language_code)
     if str(msg.chat.id) =="6524015514":
         await bot.send_document(
@@ -62,8 +64,14 @@ async def testPass(msg):
     crackTimes = pas["crack_times_display"]
     await bot.send_message(
         chat_id=cid,
+        reply_to_message_id=msg.id,
         text=f'''Results for ||{escape_markdown(pas["password"])}||\nScore💯: {score(int(pas["score"]))}\nCan be cracked with💥:{cracker}\n\nCrack times⏳:\nOnline throttling 100 per hour: {crackTimes["online_throttling_100_per_hour"]}\nOnline no throttling 10 per second: {crackTimes["online_no_throttling_10_per_second"]}\nOffline slow hashing 10,000 per second: {crackTimes["offline_slow_hashing_1e4_per_second"]}\nOffline fast hashing 10,000,000,000 per second: {crackTimes["offline_fast_hashing_1e10_per_second"]}\n\nWarnings⚠️: {warnings.strip()}\n\nSuggestions: {suggestions_len}\n{escape_markdown(sgs)}''',
-        parse_mode="MarkdownV2"
+        parse_mode="MarkdownV2",
+        protect_content=True,
+    )
+    await bot.delete_message(
+        chat_id=msg.chat.id,
+        message_id=msg.id
     )
 
 import asyncio
